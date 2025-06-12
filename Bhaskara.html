@@ -1,0 +1,22 @@
+<meta charset="UTF-8">
+<script>
+    document.write("Site que resolve equações do 2º grau | ");
+    // Entrada ;
+    const A = Number(prompt("Informe valor de A na equação "));
+    const B = Number(prompt("Informe o valor de B na equação "));
+    const C = Number(prompt("Informe o valor de C equação "));
+    // Processamento
+    let delta = Number(B * B - 4 * A * C);
+    document.write(` Delta é igual à ${delta}, `);
+    if (delta >= 0) {
+        let primeiraSolucao = (- B + Math.sqrt(delta)) / (2 * A);
+        let segundaSolucao = (- B - Math.sqrt(delta)) / (2 * A);
+        // Saida
+        document.write(`a primeira solução para a equação é ${primeiraSolucao},   `);
+        document.write(`a segunda solução para a equação é ${segundaSolucao}.  `);
+    } else {
+        document.write("como Delta é negativo, não há solução no campo dos reais para essa equação.");
+    }
+
+
+</script>
