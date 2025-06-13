@@ -17,21 +17,22 @@
   // Conta o número total de letras da frase, contando os espaços  
   const palavras = frase.split(" ");
   // Divide a frase em palavras;
-  const numeroDeLetras = (frase.length + 1) - (palavras.length);
+  const numeroDeLetrasTotais = (frase.length + 1) - (palavras.length);
 /* Conta o número de letras totais, conta o de palavras e como para cada palavra ser separada precisa de 1 espaço, o mais 1 é porque toda frase inicia com uma palavra e termina com uma, fazendo ter sempre menos um espaços na frase, exemplo:
 palavra[]palavra,[]palavra */
 //OBJECT VALUES
   for (const letrasPPalavra of palavras) {
     letras[letrasPPalavra] = letrasPPalavra.length;
   }
-  let fatorial = 1;
+  /*let fatorial = 1;
  for (i = 1; i <= numeroDeLetras; i++){
    fatorial = fatorial * i;
- }
+ }*/
+const teste = Object.values(letras);
   // O loop for é repetido 
   // para cada array do split, então é somado 1 para cada letra por array separadamente, assim contando a quantidade de letras por palavra.
 // SAIDA 
 alert(palavras);
 alert(letras);
-alert(`Ao todo, a frase tem ${numeroDeLetras} letras.`);
+alert(`Ao todo, a frase tem ${numeroDeLetrasTotais} letras.`);
 </script>
