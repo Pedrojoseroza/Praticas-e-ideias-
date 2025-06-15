@@ -1,0 +1,14 @@
+<meta charset = "UTF-8">
+<script>
+    const N = parseInt(prompt(`Quantos alunos tem o professor?`));
+    let a = prompt(`Informe a altura de cada aluno, separado por somente um espaço.`).split(` `);
+   let b = a.map(Number);
+    let pessoasColando = N - 1;
+    for ( let i = N - 1;a[i] < a[i - 1] ; i-- ){
+       if (a[i] < a[i - 1]) {
+            pessoasColando--;
+       }
+    }
+    console.log(b);
+    console.log(pessoasColando);
+</script>
