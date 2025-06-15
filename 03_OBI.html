@@ -2,13 +2,12 @@
 <script>
     const N = parseInt(prompt(`Quantos alunos tem o professor?`));
     let a = prompt(`Informe a altura de cada aluno, separado por somente um espaço.`).split(` `);
-   let b = a.map(Number);
+   let b = a.map(Number); // Transforma String em um Number 
     let pessoasColando = N - 1;
-    for ( let i = N - 1;a[i] < a[i - 1] ; i-- ){
-       if (a[i] < a[i - 1]) {
+    for ( let i = N - 1; b[i] < b[i - 1]; i--){
+       if (b[i] < b[i - 1]) {
             pessoasColando--;
        }
     }
-    console.log(b);
-    console.log(pessoasColando);
+    alert(`Pode haver até ${pessoasColando} pessoas colando.`);
 </script>
