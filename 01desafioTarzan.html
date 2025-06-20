@@ -1,5 +1,5 @@
 <script>
-    /*
+  /*
     Peça ao usuário para digitar uma frase que tenha pelo menos 3 palavras e no mínimo 25 letras.
     O programa deve mostrar:
         Cada palavra da frase separadamente.
@@ -9,35 +9,54 @@
     O programa também deve calcular e mostrar o número de combinações possíveis para formar novas palavras com as letras de cada palavra da frase.
 
     Dica: O número de combinações possíveis de letras pode ser calculado com o fatorial do número de letras de cada palavra.*/
-    // ENTRADA
-    let frase = prompt(`Digite uma frase que tenha pelo menos 3 palavras e no mínimo 25 letras.`);
-    let letras = [];
-// PROCESSAMENTO 
-  const letrasEEspacos = frase.length;
-  // Conta o número total de letras da frase, contando os espaços  
+  // ENTRADA
+  let frase = prompt(
+    `Digite uma frase que tenha pelo menos 3 palavras e no mínimo 25 letras(Sem vírgula e ponto final).`
+  );
+  // PROCESSAMENTO
+  let mensagem = "";
   const palavras = frase.split(" ");
   // Divide a frase em palavras;
-  const numeroDeLetrasTotais = (frase.length + 1) - (palavras.length);
-/* Conta o número de letras totais, conta o de palavras e como para cada palavra ser separada precisa de 1 espaço, o mais 1 é porque toda frase inicia com uma palavra e termina com uma, fazendo ter sempre menos um espaços na frase, exemplo:
-palavra[]palavra,[]palavra */
-//OBJECT VALUES
-
-for (const letrasPPalavra of palavras) {
-  letras[letrasPPalavra] = letrasPPalavra.length;
-}
-let fatorial = 1;
-let teste = Object.values(letras);
- for (i = 0; i < teste.length; i++){
-  fatorial = 1;
-   for (let n = 1; n <= teste[i]; n++) {
-    fatorial = fatorial * n;
-   }
-   teste[i] = fatorial
- }
-  // O loop for é repetido 
-  // para cada array do split, então é somado 1 para cada letra por array separadamente, assim contando a quantidade de letras por palavra.
-// SAIDA 
-alert(palavras);
-console.log(teste);
-alert(`Ao todo, a frase tem ${numeroDeLetrasTotais} letras.`);
+  const numeroDeLetrasTotais = frase.length + 1 - palavras.length;
+  /* Conta o número de letras totais, conta o de palavras e como para cada palavra ser separada precisa de 1 espaço, o mais 1 é porque toda frase inicia com uma palavra e termina com uma, fazendo ter sempre menos um espaços na frase, exemplo:
+  palavra[]palavra,[]palavra */
+  if (palavras.length >= 3 && numeroDeLetrasTotais >= 25) {
+    let letras = [];
+    for (
+      let letrasPPalavra = 0;
+      letrasPPalavra < palavras.length;
+      letrasPPalavra++
+    ) {
+      letras[letrasPPalavra] = palavras[letrasPPalavra].length;
+     // O loop for é repetido
+    // para cada array do split, então é somado 1 para cada letra por array separadamente, assim contando a quantidade de letras por palavra.
+    }
+    let fatorial = 1;
+    let fatorialDasLetras = Object.values(letras);
+    for (i = 0; i < fatorialDasLetras.length; i++) {
+      fatorial = 1;
+      for (let n = 1; n <= fatorialDasLetras[i]; n++) {
+        fatorial = fatorial * n;
+      }
+      fatorialDasLetras[i] = fatorial;
+    }
+    mensagem = `Aqui estão todas as palavras separadas da frase separadas por vírgula: ${palavras}.Aqui estão as palavras e sua respectivas quantidade de letras, ${palavras[0]}: ${letras[0]}, ${palavras[1]}: ${letras[1]}, ${palavras[2]}: ${letras[2]}`;
+    if (palavras.length > 3) {
+      for (let i = 3; i < palavras.length; i++) {
+        mensagem += `, ${palavras[i]}: ${letras[i]}`;
+      }
+    }
+    mensagem += `. Além disso, a frase tem ${numeroDeLetrasTotais} letras, desconsiderando espaços.`
+   mensagem += `Ao fim, temos que para cada palavra, temos a quantidade de possibilidades de se formar novas palavras com as letras, ${palavras[0]}: ${fatorialDasLetras[0]},${palavras[1]}: ${fatorialDasLetras[1]}, ${palavras[2]}: ${fatorialDasLetras[2]}`
+   if (palavras.length > 3) {
+      for (let i = 3; i < palavras.length; i++) {
+        mensagem += `, ${palavras[i]}: ${fatorialDasLetras[i]}`;
+      }
+    }
+  mensagem+= ".";
+  } else {
+    mensagem = `Informe uma frase válida!!!`;
+  }
+  // SAIDA
+  alert(mensagem);
 </script>
