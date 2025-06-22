@@ -4,7 +4,7 @@
     let a = prompt(`Informe a altura de cada aluno, separado por somente um espaço.`).split(` `);
    let b = a.map(Number); // Transforma String em um Number 
     let pessoasColando = N - 1;
-    for ( let i = N - 1; i > 0; i--){
+    for ( let i = N - 1; b[i] < b[i - 1]; i--){
        if (b[i] < b[i - 1]) {
             pessoasColando--;
        }
