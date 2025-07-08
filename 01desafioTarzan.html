@@ -12,10 +12,10 @@
   // ENTRADA
   let frase = prompt(
     `Digite uma frase que tenha pelo menos 3 palavras e no mínimo 25 letras(Sem vírgula e ponto final).`
-  );
+  ).trim();
   // PROCESSAMENTO
   let mensagem = "";
-  const palavras = frase.split(" ");
+  let palavras = frase.split(" ");
   // Divide a frase em palavras;
   const numeroDeLetrasTotais = frase.length + 1 - palavras.length;
   /* Conta o número de letras totais, conta o de palavras e como para cada palavra ser separada precisa de 1 espaço, o mais 1 é porque toda frase inicia com uma palavra e termina com uma, fazendo ter sempre menos um espaços na frase, exemplo:
@@ -28,8 +28,21 @@
       letrasPPalavra++
     ) {
       letras[letrasPPalavra] = palavras[letrasPPalavra].length;
-     // O loop for é repetido
-    // para cada array do split, então é somado 1 para cada letra por array separadamente, assim contando a quantidade de letras por palavra.
+    }
+      // O loop for é repetido
+      // para cada array do split, então é somado 1 para cada letra por array separadamente, assim contando a quantidade de letras por palavra.
+      let letrasRepetidas = [];
+      for(let p = 0; p < palavras.length; p++){
+        let substituto = palavras;
+        let contadorLetrasRepetidas = 0;
+        palavras = palavras[p].split("");
+        for(let q = 0; q < palavras.length; q++){
+        if (palavras[p] === palavras[q]) {
+          contadorLetrasRepetidas++
+        }
+      }
+       letrasRepetidas.push(contadorLetrasRepetidas);
+        palavras = substituto;
     }
     let fatorial = 1;
     let fatorialDasLetras = Object.values(letras);
@@ -46,14 +59,14 @@
         mensagem += `, ${palavras[i]}: ${letras[i]}`;
       }
     }
-    mensagem += `. Além disso, a frase tem ${numeroDeLetrasTotais} letras, desconsiderando espaços.`
-   mensagem += `Ao fim, temos que para cada palavra, temos a quantidade de possibilidades de se formar novas palavras com as letras, ${palavras[0]}: ${fatorialDasLetras[0]},${palavras[1]}: ${fatorialDasLetras[1]}, ${palavras[2]}: ${fatorialDasLetras[2]}`
-   if (palavras.length > 3) {
+    mensagem += `. Além disso, a frase tem ${numeroDeLetrasTotais} letras, desconsiderando espaços.`;
+    mensagem += `Ao fim, temos que para cada palavra, temos a quantidade de possibilidades de se formar novas palavras com as letras, ${palavras[0]}: ${fatorialDasLetras[0]},${palavras[1]}: ${fatorialDasLetras[1]}, ${palavras[2]}: ${fatorialDasLetras[2]}`;
+    if (palavras.length > 3) {
       for (let i = 3; i < palavras.length; i++) {
         mensagem += `, ${palavras[i]}: ${fatorialDasLetras[i]}`;
       }
     }
-  mensagem+= ".";
+    mensagem += ".";
   } else {
     mensagem = `Informe uma frase válida!!!`;
   }
