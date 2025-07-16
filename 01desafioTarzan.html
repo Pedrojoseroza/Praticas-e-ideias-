@@ -29,21 +29,17 @@
     ) {
       letras[letrasPPalavra] = palavras[letrasPPalavra].length;
     }
-      // O loop for é repetido
-      // para cada array do split, então é somado 1 para cada letra por array separadamente, assim contando a quantidade de letras por palavra.
-      let letrasRepetidas = [];
-      for(let p = 0; p < palavras.length; p++){
-        let substituto = palavras;
-        let contadorLetrasRepetidas = 0;
-        palavras = palavras[p].split("");
-        for(let q = 0; q < palavras.length; q++){
-        if (palavras[p] === palavras[q]) {
-          contadorLetrasRepetidas++
-        }
+    // O loop for é repetido
+    // para cada array do split, então é somado 1 para cada letra por array separadamente, assim contando a quantidade de letras por palavra.
+    let letrasRepetidas = [];
+    for (let p = 0; p < palavras.length; p++) {
+      let palavraFatorada = palavras[p].toLowerCase().split("");
+      /* 
+      =============================================================
+      Aqui precisa ser realizada a contagem de letras repetidas
+    ===============================================================
+      */
       }
-       letrasRepetidas.push(contadorLetrasRepetidas);
-        palavras = substituto;
-    }
     let fatorial = 1;
     let fatorialDasLetras = Object.values(letras);
     for (i = 0; i < fatorialDasLetras.length; i++) {
@@ -52,15 +48,21 @@
         fatorial = fatorial * n;
       }
       fatorialDasLetras[i] = fatorial;
+      /*
+      ==========================================================
+        Aqui é realizada o fatorial de cada letra.        
+      ==========================================================
+      */
     }
-    mensagem = `Aqui estão todas as palavras separadas da frase separadas por vírgula: ${palavras}.Aqui estão as palavras e sua respectivas quantidade de letras, ${palavras[0]}: ${letras[0]}, ${palavras[1]}: ${letras[1]}, ${palavras[2]}: ${letras[2]}`;
+    mensagem = `Aqui estão todas as palavras separadas da frase separadas por vírgula: ${palavras}. \nAqui estão as palavras e sua respectivas quantidade de letras, ${palavras[0]}: ${letras[0]}, ${palavras[1]}: ${letras[1]}, ${palavras[2]}: ${letras[2]}`;
     if (palavras.length > 3) {
       for (let i = 3; i < palavras.length; i++) {
         mensagem += `, ${palavras[i]}: ${letras[i]}`;
       }
     }
-    mensagem += `. Além disso, a frase tem ${numeroDeLetrasTotais} letras, desconsiderando espaços.`;
-    mensagem += `Ao fim, temos que para cada palavra, temos a quantidade de possibilidades de se formar novas palavras com as letras, ${palavras[0]}: ${fatorialDasLetras[0]},${palavras[1]}: ${fatorialDasLetras[1]}, ${palavras[2]}: ${fatorialDasLetras[2]}`;
+
+    mensagem += `.\n Além disso, a frase tem ${numeroDeLetrasTotais} letras, desconsiderando espaços.`;
+    mensagem += `\nNo fim, temos que para cada palavra, temos a quantidade de possibilidades de se formar novas palavras com as letras, ${palavras[0]}: ${fatorialDasLetras[0]},${palavras[1]}: ${fatorialDasLetras[1]}, ${palavras[2]}: ${fatorialDasLetras[2]}`;
     if (palavras.length > 3) {
       for (let i = 3; i < palavras.length; i++) {
         mensagem += `, ${palavras[i]}: ${fatorialDasLetras[i]}`;
