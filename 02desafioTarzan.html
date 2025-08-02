@@ -1,0 +1,80 @@
+<script>
+    /*
+Faça um conversor que:
+
+Peça ao usuário para digitar um número inteiro positivo.
+
+O programa deve mostrar:
+
+    O número convertido para binário.
+    O número convertido para hexadecimal.
+    A quantidade de bits do número.
+    A quantidade de bytes e megabytes correspondentes ao número de bits.
+
+Se o número de bits não for suficiente para formar um byte ou um megabyte, o programa deve mostrar quantos bits ainda faltam para alcançar cada uma dessas unidades.*/
+//ENTRADA 
+const numeroChave = parseInt(prompt(`Informe um número inteiro qualquer: `));
+//PROCESSAMENTO 
+let mensagem = ``;
+// Parte do Binário
+let binarioExibido = "";
+let binario = numeroChave;
+while(binario > 1){
+    binarioExibido += binario % 2;
+    binario = Math.floor(binario /2);
+}
+binarioExibido += binario;
+binarioExibido = binarioExibido.split("").reverse().join("");
+// Hexadecimal 
+let hexaExibido = ``;
+let hexadecimal = numeroChave;
+while (hexadecimal > 1){
+    if (hexadecimal % 16 >= 10) {
+        switch (hexadecimal % 16) {
+            case 10:
+                hexaExibido += `A`;
+                break;
+            case 11:
+                hexaExibido += `B`;
+                break;
+            case 12: 
+                hexaExibido += `C`;
+            break;
+            case 13: 
+                hexaExibido += `D`;
+            break;
+            case 14: 
+                hexaExibido += `E`;
+            break;
+            case 15: 
+                hexaExibido += `F`;
+            break;
+        }
+    } else {
+        hexaExibido += hexadecimal % 16;
+    }
+    hexadecimal = Math.floor(hexadecimal / 16);
+}
+hexaExibido+= hexadecimal;
+hexaExibido = hexaExibido.split("").reverse().join("");
+//Parte dos Bits
+let bitsExibidos = binarioExibido.length;
+mensagem = `O número informado: ${numeroChave} \n
+            corresponde à ${binarioExibido} em binário;\n
+            corresponde à ${hexaExibido} em hexadecimal;\n
+            necessita de ${bitsExibidos} bits para ser exibido em binário`
+if (bitsExibidos >= 8) {
+    let byteExibidos = Math.ceil(bitsExibidos / 8);
+    mensagem += `;\n o número de bits corresponde à ${byteExibidos} bytes `
+    if (byteExibidos >=  1048576) {
+    let MegaByteExibidos = Math.ceil(bitsExibidos /  1048576);
+    mensagem += `;\n e o número de bits corresponde à ${MegaByteExibidos} megabytes.`
+} else {
+    mensagem += `e para formar um megabyte necessita ${1048576-byteExibidos} bytes.`
+}
+} else {
+    mensagem += `e para formar um byte necessita ${8-bitsExibidos} bits.`
+}
+//SAÍDA 
+alert(mensagem);
+</script>
